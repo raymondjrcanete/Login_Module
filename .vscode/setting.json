@@ -1,0 +1,6 @@
+{
+    "robot.language-server.python": "C:\\VirtualEnv\\Scripts\\python.exe",
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "files.insertFinalNewline": true,
+}
