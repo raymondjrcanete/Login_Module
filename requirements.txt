@@ -1,0 +1,11 @@
+robotframework
+robotframework-pabot
+robotframework-pythonlibcore
+robotframework-seleniumlibrary
+selenium
+setuptools
+urllib3
+pywin32
+opencv-python
+rpaframework
+robotframework-faker

@@ -1,0 +1,4 @@
+--exclude file-too-long
+--exclude missing-doc-test-case
+--exclude line-too-long
+--exclude too-few-calls-in-keyword
