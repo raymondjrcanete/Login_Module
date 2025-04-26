@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.10 on win32)" generated="2025-04-27T00:11:06.621673" rpa="false" schemaversion="5">
+<suite id="s1" name="Login saudemo" source="c:\Users\raymond\Documents\PROJECTS\Login_Module\Login\Login_saudemo.robot">
+<test id="s1-t1" name="login Test001: User should not be able to login if an invalid credentials are entered" line="11">
+<kw name="Navigate To Site" owner="Login_Keywords" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:06.875963" level="INFO">Opening browser 'Chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-27T00:11:06.874873" elapsed="1.957243"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-04-27T00:11:08.832116" elapsed="0.089228"/>
+</kw>
+<arg>${LINK_SAUCEDEMO}</arg>
+<arg>${BROWSER}</arg>
+<doc>The user opens a browser and navigates to the site.</doc>
+<status status="PASS" start="2025-04-27T00:11:06.872882" elapsed="2.049463"/>
+</kw>
+<kw name="Given The User Navigates To Signin Page Of Saucedemo" owner="Login_Keywords">
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:08.936349" level="INFO">Page title is 'Swag Labs'.</msg>
+<arg>${TITLE_INVENTORY}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2025-04-27T00:11:08.924351" elapsed="0.012992"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MODAL_LOGIN}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:08.937343" elapsed="0.054065"/>
+</kw>
+<doc>Test if the user was able to view login modal and check if login modal and MT logo is displayed</doc>
+<status status="PASS" start="2025-04-27T00:11:08.924351" elapsed="0.067057"/>
+</kw>
+<kw name="When The User Logs In Using &quot;${INVALID_USERNAME}&quot; And &quot;${INVALID_PASSWORD}&quot; Credentials" owner="Login_Keywords" source_name="The User Logs In Using &quot;${username}&quot; And &quot;${password}&quot; Credentials">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${TB_USERNAME}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:08.993408" elapsed="0.026528"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:09.020936" level="INFO">Typing text 'invalid_user' into text field '//input[@id='user-name']'.</msg>
+<arg>${TB_USERNAME}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:09.020936" elapsed="0.129396"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:09.151466" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg time="2025-04-27T00:11:09.185480" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${TB_PASSWORD}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:09.150332" elapsed="0.098334"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:09.248666" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<arg>${BTN_LOGIN}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:09.248666" elapsed="0.077322"/>
+</kw>
+<doc>Input Credentials</doc>
+<status status="PASS" start="2025-04-27T00:11:08.992408" elapsed="0.333580"/>
+</kw>
+<kw name="Then An Error Message &quot;Username and password do not match&quot; Should Be Displayed" owner="Login_Keywords" source_name="An Error Message &quot;${error_msg}&quot; Should Be Displayed">
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2025-04-27T00:11:09.328989" level="INFO">${VALIDATION_ERROR_MESSAGE} = //*[contains(text(),'Username and password do not match')]</msg>
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<arg>//*[contains(text(),'${error_msg}')]</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2025-04-27T00:11:09.327990" elapsed="0.000999"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:09.329986" elapsed="0.020158"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:09.364130" level="INFO">Element '//*[contains(text(),'Username and password do not match')]' is displayed.</msg>
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:09.350144" elapsed="0.013986"/>
+</kw>
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:09.370131" level="INFO">${count_error_msg} = 1</msg>
+<var>${count_error_msg}</var>
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:09.364130" elapsed="0.007034"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-04-27T00:11:09.371164" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${count_error_msg}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-04-27T00:11:09.371164" elapsed="0.000000"/>
+</kw>
+<doc>Check if the error message will appear
+COM-2 &amp; COM-3: Username and password fields only accepts valid credentials</doc>
+<status status="PASS" start="2025-04-27T00:11:09.326991" elapsed="0.044173"/>
+</kw>
+<kw name="And The User Should Not Be Able To Login" owner="Login_Keywords">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:09.381603" level="INFO">Current location contains 'https://www.saucedemo.com/'.</msg>
+<arg>${LINK_SAUCEDEMO}</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2025-04-27T00:11:09.372132" elapsed="0.009471"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:09.395061" level="INFO">Element '//div[@class='login_wrapper-inner']' is displayed.</msg>
+<arg>${MODAL_LOGIN}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:09.381603" elapsed="0.013458"/>
+</kw>
+<doc>Test if the user is unsuccessful in logging in</doc>
+<status status="PASS" start="2025-04-27T00:11:09.372132" elapsed="0.022929"/>
+</kw>
+<kw name="Quit Browser" owner="Login_Keywords" type="TEARDOWN">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-27T00:11:09.896884" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-27T00:11:09.396060" elapsed="0.500824"/>
+</kw>
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-04-27T00:11:09.896884" elapsed="2.204193"/>
+</kw>
+<doc>Closes browser after delay</doc>
+<status status="PASS" start="2025-04-27T00:11:09.396060" elapsed="2.705687"/>
+</kw>
+<status status="PASS" start="2025-04-27T00:11:06.871894" elapsed="5.230940"/>
+</test>
+<test id="s1-t2" name="login Test002: User should not be able to login if an invalid password is entered" line="17">
+<kw name="Navigate To Site" owner="Login_Keywords" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:12.109827" level="INFO">Opening browser 'Chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-27T00:11:12.108770" elapsed="1.839716"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-04-27T00:11:13.948486" elapsed="0.049352"/>
+</kw>
+<arg>${LINK_SAUCEDEMO}</arg>
+<arg>${BROWSER}</arg>
+<doc>The user opens a browser and navigates to the site.</doc>
+<status status="PASS" start="2025-04-27T00:11:12.108770" elapsed="1.889068"/>
+</kw>
+<kw name="Given The User Navigates To Signin Page Of Saucedemo" owner="Login_Keywords">
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:14.017678" level="INFO">Page title is 'Swag Labs'.</msg>
+<arg>${TITLE_INVENTORY}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2025-04-27T00:11:13.998844" elapsed="0.019833"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MODAL_LOGIN}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:14.018677" elapsed="0.051536"/>
+</kw>
+<doc>Test if the user was able to view login modal and check if login modal and MT logo is displayed</doc>
+<status status="PASS" start="2025-04-27T00:11:13.998844" elapsed="0.071369"/>
+</kw>
+<kw name="When The User Logs In Using &quot;${VALID_USERNAME}&quot; And &quot;${INVALID_PASSWORD}&quot; Credentials" owner="Login_Keywords" source_name="The User Logs In Using &quot;${username}&quot; And &quot;${password}&quot; Credentials">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${TB_USERNAME}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:14.072217" elapsed="0.027005"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:14.100222" level="INFO">Typing text 'standard_user' into text field '//input[@id='user-name']'.</msg>
+<arg>${TB_USERNAME}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:14.100222" elapsed="0.153358"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:14.253580" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg time="2025-04-27T00:11:14.289566" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${TB_PASSWORD}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:14.253580" elapsed="0.098841"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:14.352421" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<arg>${BTN_LOGIN}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:14.352421" elapsed="0.074838"/>
+</kw>
+<doc>Input Credentials</doc>
+<status status="PASS" start="2025-04-27T00:11:14.071212" elapsed="0.357057"/>
+</kw>
+<kw name="Then An Error Message &quot;Username and password do not match&quot; Should Be Displayed" owner="Login_Keywords" source_name="An Error Message &quot;${error_msg}&quot; Should Be Displayed">
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2025-04-27T00:11:14.430763" level="INFO">${VALIDATION_ERROR_MESSAGE} = //*[contains(text(),'Username and password do not match')]</msg>
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<arg>//*[contains(text(),'${error_msg}')]</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2025-04-27T00:11:14.429725" elapsed="0.002055"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:14.431780" elapsed="0.038013"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:14.483673" level="INFO">Element '//*[contains(text(),'Username and password do not match')]' is displayed.</msg>
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:14.469793" elapsed="0.013880"/>
+</kw>
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:14.491075" level="INFO">${count_error_msg} = 1</msg>
+<var>${count_error_msg}</var>
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:14.483673" elapsed="0.007402"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-04-27T00:11:14.491075" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${count_error_msg}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-04-27T00:11:14.491075" elapsed="0.000000"/>
+</kw>
+<doc>Check if the error message will appear
+COM-2 &amp; COM-3: Username and password fields only accepts valid credentials</doc>
+<status status="PASS" start="2025-04-27T00:11:14.428269" elapsed="0.062806"/>
+</kw>
+<kw name="And The User Should Not Be Able To Login" owner="Login_Keywords">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:14.498079" level="INFO">Current location contains 'https://www.saucedemo.com/'.</msg>
+<arg>${LINK_SAUCEDEMO}</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2025-04-27T00:11:14.492898" elapsed="0.005181"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:14.511315" level="INFO">Element '//div[@class='login_wrapper-inner']' is displayed.</msg>
+<arg>${MODAL_LOGIN}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:14.498079" elapsed="0.013236"/>
+</kw>
+<doc>Test if the user is unsuccessful in logging in</doc>
+<status status="PASS" start="2025-04-27T00:11:14.492898" elapsed="0.019785"/>
+</kw>
+<kw name="Quit Browser" owner="Login_Keywords" type="TEARDOWN">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-27T00:11:15.013948" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-27T00:11:14.512683" elapsed="0.501265"/>
+</kw>
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-04-27T00:11:15.014973" elapsed="2.262073"/>
+</kw>
+<doc>Closes browser after delay</doc>
+<status status="PASS" start="2025-04-27T00:11:14.512683" elapsed="2.764363"/>
+</kw>
+<status status="PASS" start="2025-04-27T00:11:12.106777" elapsed="5.171147"/>
+</test>
+<test id="s1-t3" name="login Test003: User should not be able to login using a null username" line="23">
+<kw name="Navigate To Site" owner="Login_Keywords" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:17.283544" level="INFO">Opening browser 'Chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-27T00:11:17.283544" elapsed="1.867745"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-04-27T00:11:19.151289" elapsed="0.060429"/>
+</kw>
+<arg>${LINK_SAUCEDEMO}</arg>
+<arg>${BROWSER}</arg>
+<doc>The user opens a browser and navigates to the site.</doc>
+<status status="PASS" start="2025-04-27T00:11:17.282536" elapsed="1.929182"/>
+</kw>
+<kw name="Given The User Navigates To Signin Page Of Saucedemo" owner="Login_Keywords">
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:19.228873" level="INFO">Page title is 'Swag Labs'.</msg>
+<arg>${TITLE_INVENTORY}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2025-04-27T00:11:19.212713" elapsed="0.017581"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MODAL_LOGIN}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:19.230294" elapsed="0.054388"/>
+</kw>
+<doc>Test if the user was able to view login modal and check if login modal and MT logo is displayed</doc>
+<status status="PASS" start="2025-04-27T00:11:19.212713" elapsed="0.071969"/>
+</kw>
+<kw name="When The User Logs In Using &quot;${NULL_USERNAME}&quot; And &quot;${VALID_PASSWORD}&quot; Credentials" owner="Login_Keywords" source_name="The User Logs In Using &quot;${username}&quot; And &quot;${password}&quot; Credentials">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${TB_USERNAME}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:19.286686" elapsed="0.030167"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:19.316853" level="INFO">Typing text '' into text field '//input[@id='user-name']'.</msg>
+<arg>${TB_USERNAME}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:19.316853" elapsed="0.133702"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:19.451595" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg time="2025-04-27T00:11:19.497768" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${TB_PASSWORD}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:19.450555" elapsed="0.136287"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:19.587917" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<arg>${BTN_LOGIN}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:19.587917" elapsed="0.074544"/>
+</kw>
+<doc>Input Credentials</doc>
+<status status="PASS" start="2025-04-27T00:11:19.285685" elapsed="0.376776"/>
+</kw>
+<kw name="Then An Error Message &quot;Username is required&quot; Should Be Displayed" owner="Login_Keywords" source_name="An Error Message &quot;${error_msg}&quot; Should Be Displayed">
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2025-04-27T00:11:19.665448" level="INFO">${VALIDATION_ERROR_MESSAGE} = //*[contains(text(),'Username is required')]</msg>
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<arg>//*[contains(text(),'${error_msg}')]</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2025-04-27T00:11:19.663443" elapsed="0.002005"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:19.665448" elapsed="0.018356"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:19.696604" level="INFO">Element '//*[contains(text(),'Username is required')]' is displayed.</msg>
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:19.683804" elapsed="0.012800"/>
+</kw>
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:19.702107" level="INFO">${count_error_msg} = 1</msg>
+<var>${count_error_msg}</var>
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:19.696604" elapsed="0.005503"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-04-27T00:11:19.702107" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${count_error_msg}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-04-27T00:11:19.702107" elapsed="0.000000"/>
+</kw>
+<doc>Check if the error message will appear
+COM-2 &amp; COM-3: Username and password fields only accepts valid credentials</doc>
+<status status="PASS" start="2025-04-27T00:11:19.663443" elapsed="0.038664"/>
+</kw>
+<kw name="And The User Should Not Be Able To Login" owner="Login_Keywords">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:19.713201" level="INFO">Current location contains 'https://www.saucedemo.com/'.</msg>
+<arg>${LINK_SAUCEDEMO}</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2025-04-27T00:11:19.704118" elapsed="0.009083"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:19.726783" level="INFO">Element '//div[@class='login_wrapper-inner']' is displayed.</msg>
+<arg>${MODAL_LOGIN}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:19.714196" elapsed="0.013628"/>
+</kw>
+<doc>Test if the user is unsuccessful in logging in</doc>
+<status status="PASS" start="2025-04-27T00:11:19.704118" elapsed="0.023706"/>
+</kw>
+<kw name="Quit Browser" owner="Login_Keywords" type="TEARDOWN">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-27T00:11:20.229134" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-27T00:11:19.728784" elapsed="0.501285"/>
+</kw>
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-04-27T00:11:20.230069" elapsed="2.242590"/>
+</kw>
+<doc>Closes browser after delay</doc>
+<status status="PASS" start="2025-04-27T00:11:19.727824" elapsed="2.745933"/>
+</kw>
+<status status="PASS" start="2025-04-27T00:11:17.281539" elapsed="5.193069"/>
+</test>
+<test id="s1-t4" name="login Test004: User should not be able to login using a null Password" line="29">
+<kw name="Navigate To Site" owner="Login_Keywords" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:22.480139" level="INFO">Opening browser 'Chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-27T00:11:22.480139" elapsed="1.935198"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-04-27T00:11:24.415337" elapsed="0.034611"/>
+</kw>
+<arg>${LINK_SAUCEDEMO}</arg>
+<arg>${BROWSER}</arg>
+<doc>The user opens a browser and navigates to the site.</doc>
+<status status="PASS" start="2025-04-27T00:11:22.479610" elapsed="1.970338"/>
+</kw>
+<kw name="Given The User Navigates To Signin Page Of Saucedemo" owner="Login_Keywords">
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:24.467965" level="INFO">Page title is 'Swag Labs'.</msg>
+<arg>${TITLE_INVENTORY}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2025-04-27T00:11:24.451938" elapsed="0.016027"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MODAL_LOGIN}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:24.468973" elapsed="0.061791"/>
+</kw>
+<doc>Test if the user was able to view login modal and check if login modal and MT logo is displayed</doc>
+<status status="PASS" start="2025-04-27T00:11:24.450936" elapsed="0.080822"/>
+</kw>
+<kw name="When The User Logs In Using &quot;${VALID_USERNAME}&quot; And &quot;${NULL_PASSWORD}&quot; Credentials" owner="Login_Keywords" source_name="The User Logs In Using &quot;${username}&quot; And &quot;${password}&quot; Credentials">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${TB_USERNAME}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:24.533753" elapsed="0.033546"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:24.568299" level="INFO">Typing text 'standard_user' into text field '//input[@id='user-name']'.</msg>
+<arg>${TB_USERNAME}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:24.568299" elapsed="0.199226"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:24.768526" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg time="2025-04-27T00:11:24.827886" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${TB_PASSWORD}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:24.767525" elapsed="0.113905"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:24.881430" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<arg>${BTN_LOGIN}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:24.881430" elapsed="0.085858"/>
+</kw>
+<doc>Input Credentials</doc>
+<status status="PASS" start="2025-04-27T00:11:24.532750" elapsed="0.435537"/>
+</kw>
+<kw name="Then An Error Message &quot;Password is required&quot; Should Be Displayed" owner="Login_Keywords" source_name="An Error Message &quot;${error_msg}&quot; Should Be Displayed">
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2025-04-27T00:11:24.972292" level="INFO">${VALIDATION_ERROR_MESSAGE} = //*[contains(text(),'Password is required')]</msg>
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<arg>//*[contains(text(),'${error_msg}')]</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2025-04-27T00:11:24.970305" elapsed="0.002988"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:24.973293" elapsed="0.024537"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:25.012834" level="INFO">Element '//*[contains(text(),'Password is required')]' is displayed.</msg>
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:24.997830" elapsed="0.016010"/>
+</kw>
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:25.022836" level="INFO">${count_error_msg} = 1</msg>
+<var>${count_error_msg}</var>
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:25.013840" elapsed="0.009897"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-04-27T00:11:25.023737" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${count_error_msg}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-04-27T00:11:25.023737" elapsed="0.000000"/>
+</kw>
+<doc>Check if the error message will appear
+COM-2 &amp; COM-3: Username and password fields only accepts valid credentials</doc>
+<status status="PASS" start="2025-04-27T00:11:24.968287" elapsed="0.055450"/>
+</kw>
+<kw name="And The User Should Not Be Able To Login" owner="Login_Keywords">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:25.032048" level="INFO">Current location contains 'https://www.saucedemo.com/'.</msg>
+<arg>${LINK_SAUCEDEMO}</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2025-04-27T00:11:25.025043" elapsed="0.007005"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:25.044466" level="INFO">Element '//div[@class='login_wrapper-inner']' is displayed.</msg>
+<arg>${MODAL_LOGIN}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:25.032048" elapsed="0.012418"/>
+</kw>
+<doc>Test if the user is unsuccessful in logging in</doc>
+<status status="PASS" start="2025-04-27T00:11:25.025043" elapsed="0.020928"/>
+</kw>
+<kw name="Quit Browser" owner="Login_Keywords" type="TEARDOWN">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-27T00:11:25.547837" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-27T00:11:25.046977" elapsed="0.500860"/>
+</kw>
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-04-27T00:11:25.547837" elapsed="2.274747"/>
+</kw>
+<doc>Closes browser after delay</doc>
+<status status="PASS" start="2025-04-27T00:11:25.045971" elapsed="2.776613"/>
+</kw>
+<status status="PASS" start="2025-04-27T00:11:22.477607" elapsed="5.347052"/>
+</test>
+<test id="s1-t5" name="login Test005: User should not be able to login using null username and password" line="35">
+<kw name="Navigate To Site" owner="Login_Keywords" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:27.831656" level="INFO">Opening browser 'Chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-27T00:11:27.830656" elapsed="1.864663"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-04-27T00:11:29.695319" elapsed="0.037728"/>
+</kw>
+<arg>${LINK_SAUCEDEMO}</arg>
+<arg>${BROWSER}</arg>
+<doc>The user opens a browser and navigates to the site.</doc>
+<status status="PASS" start="2025-04-27T00:11:27.829652" elapsed="1.904397"/>
+</kw>
+<kw name="Given The User Navigates To Signin Page Of Saucedemo" owner="Login_Keywords">
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:29.757576" level="INFO">Page title is 'Swag Labs'.</msg>
+<arg>${TITLE_INVENTORY}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2025-04-27T00:11:29.735048" elapsed="0.022528"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MODAL_LOGIN}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:29.757576" elapsed="0.075720"/>
+</kw>
+<doc>Test if the user was able to view login modal and check if login modal and MT logo is displayed</doc>
+<status status="PASS" start="2025-04-27T00:11:29.735048" elapsed="0.099257"/>
+</kw>
+<kw name="When The User Logs In Using &quot;${NULL_USERNAME}&quot; And &quot;${NULL_PASSWORD}&quot; Credentials" owner="Login_Keywords" source_name="The User Logs In Using &quot;${username}&quot; And &quot;${password}&quot; Credentials">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${TB_USERNAME}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:11:29.836302" elapsed="0.048914"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:29.885216" level="INFO">Typing text '' into text field '//input[@id='user-name']'.</msg>
+<arg>${TB_USERNAME}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:29.885216" elapsed="0.144113"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:30.030595" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg time="2025-04-27T00:11:30.059922" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${TB_PASSWORD}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:30.030595" elapsed="0.065776"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:11:30.097401" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<arg>${BTN_LOGIN}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:11:30.096371" elapsed="0.066385"/>
+</kw>
+<doc>Input Credentials</doc>
+<status status="PASS" start="2025-04-27T00:11:29.835297" elapsed="0.327459"/>
+</kw>
+<kw name="Then An Error Message &quot;username and Password are required&quot; Should Be Displayed" owner="Login_Keywords" source_name="An Error Message &quot;${error_msg}&quot; Should Be Displayed">
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2025-04-27T00:11:30.166246" level="INFO">${VALIDATION_ERROR_MESSAGE} = //*[contains(text(),'username and Password are required')]</msg>
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<arg>//*[contains(text(),'${error_msg}')]</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2025-04-27T00:11:30.164771" elapsed="0.001475"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:12:00.516952" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-04-27T00:12:00.516952" level="FAIL">Element '//*[contains(text(),'username and Password are required')]' not visible after 30 seconds.</msg>
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="FAIL" start="2025-04-27T00:11:30.167260" elapsed="30.349692">Element '//*[contains(text(),'username and Password are required')]' not visible after 30 seconds.</status>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2025-04-27T00:12:00.516952" elapsed="0.000000"/>
+</kw>
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<var>${count_error_msg}</var>
+<arg>${VALIDATION_ERROR_MESSAGE}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="NOT RUN" start="2025-04-27T00:12:00.516952" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${count_error_msg}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-04-27T00:12:00.516952" elapsed="0.000000"/>
+</kw>
+<doc>Check if the error message will appear
+COM-2 &amp; COM-3: Username and password fields only accepts valid credentials</doc>
+<status status="FAIL" start="2025-04-27T00:11:30.163768" elapsed="30.353184">Element '//*[contains(text(),'username and Password are required')]' not visible after 30 seconds.</status>
+</kw>
+<kw name="And The User Should Not Be Able To Login" owner="Login_Keywords">
+<doc>Test if the user is unsuccessful in logging in</doc>
+<status status="NOT RUN" start="2025-04-27T00:12:00.516952" elapsed="0.000000"/>
+</kw>
+<kw name="Quit Browser" owner="Login_Keywords" type="TEARDOWN">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-27T00:12:01.028966" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-27T00:12:00.528562" elapsed="0.500404"/>
+</kw>
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-04-27T00:12:01.032289" elapsed="2.396298"/>
+</kw>
+<doc>Closes browser after delay</doc>
+<status status="PASS" start="2025-04-27T00:12:00.528562" elapsed="2.900025"/>
+</kw>
+<status status="FAIL" start="2025-04-27T00:11:27.827654" elapsed="35.610491">Element '//*[contains(text(),'username and Password are required')]' not visible after 30 seconds.</status>
+</test>
+<test id="s1-t6" name="login Test006: User logs in successfully with valid username and password" line="42">
+<kw name="Navigate To Site" owner="Login_Keywords" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:12:03.454302" level="INFO">Opening browser 'Chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-27T00:12:03.454302" elapsed="2.282440"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-04-27T00:12:05.737768" elapsed="0.082618"/>
+</kw>
+<arg>${LINK_SAUCEDEMO}</arg>
+<arg>${BROWSER}</arg>
+<doc>The user opens a browser and navigates to the site.</doc>
+<status status="PASS" start="2025-04-27T00:12:03.452275" elapsed="2.368111"/>
+</kw>
+<kw name="Given The User Navigates To Signin Page Of Saucedemo" owner="Login_Keywords">
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:12:05.871449" level="INFO">Page title is 'Swag Labs'.</msg>
+<arg>${TITLE_INVENTORY}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2025-04-27T00:12:05.835111" elapsed="0.036338"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MODAL_LOGIN}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:12:05.873479" elapsed="0.099765"/>
+</kw>
+<doc>Test if the user was able to view login modal and check if login modal and MT logo is displayed</doc>
+<status status="PASS" start="2025-04-27T00:12:05.835111" elapsed="0.138133"/>
+</kw>
+<kw name="When The User Logs In Using &quot;${VALID_USERNAME}&quot; And &quot;${VALID_PASSWORD}&quot; Credentials" owner="Login_Keywords" source_name="The User Logs In Using &quot;${username}&quot; And &quot;${password}&quot; Credentials">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${TB_USERNAME}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:12:05.975280" elapsed="0.057748"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:12:06.034054" level="INFO">Typing text 'standard_user' into text field '//input[@id='user-name']'.</msg>
+<arg>${TB_USERNAME}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:12:06.033028" elapsed="0.237467"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:12:06.270495" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg time="2025-04-27T00:12:06.312808" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${TB_PASSWORD}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:12:06.270495" elapsed="0.194094"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:12:06.464589" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<arg>${BTN_LOGIN}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-27T00:12:06.464589" elapsed="0.141020"/>
+</kw>
+<doc>Input Credentials</doc>
+<status status="PASS" start="2025-04-27T00:12:05.974263" elapsed="0.631346"/>
+</kw>
+<kw name="Then The User Should Be Able To Login Successfully And Redirect To Inventory Page" owner="Login_Keywords">
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:12:06.622095" level="INFO">Page title is 'Swag Labs'.</msg>
+<arg>${TITLE_INVENTORY}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2025-04-27T00:12:06.607618" elapsed="0.014477"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:12:06.637355" level="INFO">Current location is 'https://www.saucedemo.com/inventory.html'.</msg>
+<arg>${LINK_INVENTORY}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-04-27T00:12:06.624106" elapsed="0.013249"/>
+</kw>
+<doc>Test if the user is successful in logging in</doc>
+<status status="PASS" start="2025-04-27T00:12:06.605609" elapsed="0.031746"/>
+</kw>
+<kw name="And Inventory Page Should Be Displayed Correctly" owner="Login_Keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MODAL_PRODUCT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:12:06.637355" elapsed="0.101111"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:12:06.770168" level="INFO">Element '//div[@class='app_logo']' is displayed.</msg>
+<arg>${HEADER_INVENTORYPAGE}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:12:06.746336" elapsed="0.031582"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:12:06.802827" level="INFO">Element '//div[@class='header_secondary_container']' is displayed.</msg>
+<arg>${SUBHEADER_INVENTORYPAGE}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:12:06.777918" elapsed="0.024909"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-27T00:12:06.821848" level="INFO">Element '//footer[@class='footer']' is displayed.</msg>
+<arg>${FOTTER_INVENTORYPAGE}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-27T00:12:06.802827" elapsed="0.019021"/>
+</kw>
+<doc>Vefiry the unique objects on Inventory page</doc>
+<status status="PASS" start="2025-04-27T00:12:06.637355" elapsed="0.184493"/>
+</kw>
+<kw name="Quit Browser" owner="Login_Keywords" type="TEARDOWN">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-27T00:12:07.322367" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-27T00:12:06.821848" elapsed="0.500519"/>
+</kw>
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-04-27T00:12:07.322367" elapsed="2.424620"/>
+</kw>
+<doc>Closes browser after delay</doc>
+<status status="PASS" start="2025-04-27T00:12:06.821848" elapsed="2.925139"/>
+</kw>
+<status status="PASS" start="2025-04-27T00:12:03.444446" elapsed="6.310067"/>
+</test>
+<doc>Test Suite for the Login Module
+The purpose of this test is to verify the Login Page.
+Validate the Invalid Credentials, and Error messages</doc>
+<status status="FAIL" start="2025-04-27T00:11:06.626643" elapsed="63.142953"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login saudemo" id="s1" pass="5" fail="1" skip="0">Login saudemo</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
