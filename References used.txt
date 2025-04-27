@@ -1,0 +1,8 @@
+References used to complete the challenge:
+
+Robot Framework – for writing automated test cases
+SeleniumLibrary – for browser automation and interaction
+Visual Studio Code – as the development environment
+Robot Framework Documentation – for syntax and keyword references
+SeleniumLibrary Documentation – for understanding and using available keywords
+Saucedemo Website – as the application under test

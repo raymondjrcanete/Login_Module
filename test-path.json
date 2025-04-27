@@ -1,8 +1,8 @@
 {
-        "Login": [
+        "SauceDemo-Inventory": [
         {
-            "name": "Login",
-            "test-suite": "Login"
+            "name": "SauceDemo_Inventory",
+            "test-suite": "SauceDemo_Inventory"
         }
     ]
 

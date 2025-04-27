@@ -32,3 +32,12 @@ ${MODAL_PRODUCT}                 //div[@class='inventory_list']
 ${HEADER_INVENTORYPAGE}          //div[@class='app_logo']
 ${SUBHEADER_INVENTORYPAGE}       //div[@class='header_secondary_container']
 ${FOTTER_INVENTORYPAGE}          //footer[@class='footer']
+${BMENU_INVENTORYPAGE}           //button[@id='react-burger-menu-btn']
+${BTN_LOGOUT}                    //a[@id='logout_sidebar_link']
+${LIST_PRODUCT_PRICE}            //div[contains(@class, 'inventory_item_price')]
+${LIST_PRODUCT_NAME}             //div[contains(@class, 'inventory_item_name')]
+${DD_A_TO_Z}                     //option[@value='az']
+${DD_Z_TO_A}                     //option[@value='za']
+${BTN_SORT}                      //select[@class='product_sort_container']
+
+${chrome_options}    --disable-blink-features=AutomationControlled --disable-password-manager-reauthentication
